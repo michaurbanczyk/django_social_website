@@ -1,0 +1,40 @@
+{# Part when using function views #}
+{#{% extends "base.html" %}#}
+{##}
+{#{% block title %} Logowanie {% endblock %}#}
+{##}
+{#{% block content %}#}
+{#    <h1>Logowanie</h1>#}
+{#    <p>Wypelnij ponizszy formularz, aby sie zalogowac: </p>#}
+{#    <form action="." method="POST">#}
+{#        {{ form.as_p }}#}
+{#        {% csrf_token %}#}
+{#        <p>#}
+{#            <input type="submit" value="Zaloguj">#}
+{#        </p>#}
+{#    </form>#}
+{#{% endblock %}#}
+
+{% extends "base.html" %}
+{% block title %}Logowanie{% endblock %}
+
+{% block content %}
+    <h1>Logowanie</h1>
+    {% if forms.error %}
+        <p>
+            Nazwa uzytkownika lub haslo sa nieprawidlowe. Sproboj ponownie
+        </p>
+    {% else %}
+        <p>Wypelnij ponizszy formularz, zeby sie zalogowac: </p>
+    {% endif %}
+    <div class="login-form">
+        <form action="{% url 'account:login' %}" method="POST">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="hidden" name="next" value = "{{ next }}" />
+            <p>
+                <input type="submit" value="Zaloguj">
+            </p>
+        </form>
+    </div>
+{% endblock %}
