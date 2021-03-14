@@ -28,7 +28,7 @@
         <p>Wypelnij ponizszy formularz, zeby sie zalogowac: </p>
     {% endif %}
     <div class="login-form">
-        <form action="{% url 'account:login' %}" method="POST">
+        <form action="{% url 'login' %}" method="POST">
             {{ form.as_p }}
             {% csrf_token %}
             <input type="hidden" name="next" value = "{{ next }}" />
@@ -36,5 +36,8 @@
                 <input type="submit" value="Zaloguj">
             </p>
         </form>
+        <p>
+            <a href="{% url "password_reset" %}">Zapomniales hasla?</a>
+        </p>
     </div>
 {% endblock %}
