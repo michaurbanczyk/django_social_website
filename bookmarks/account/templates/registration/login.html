@@ -42,4 +42,13 @@
             <a href="{% url "password_reset" %}">Zapomniales hasla?</a>
         </p>
     </div>
+    <div class="social">
+        <ul>
+            <li class="facebook">
+                <a href="{% url "social:begin" "facebook" %}">
+                    Zaloguj sie za pomoca facebooka
+                </a>
+            </li>
+        </ul>
+    </div>
 {% endblock %}
