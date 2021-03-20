@@ -3,6 +3,19 @@
 {% block title %}Panel glowny{% endblock %}
 {% block content %}
     <h1>Panel glowny</h1>
+
+    {% with total_images_created=request.user.images_created.count %}
+        <p>
+        Witaj w panelu glownym. Dodales {{ total_images_created }} obraz
+            {{ total_images_created|pluralize:"ow" }}.
+        </p>
+    {% endwith %}
+
+    <p>Przeciagnij ponizeszy przycisk na pasek ulubionych. Zyskasz mozliwosc dodawania
+    obrazow z innych witryn internetowych. <a href="javascript: {% include "bookmarklet_launcher.js" %}" class="button">
+            Dodaj obraz
+        </a>
+    </p>
     <p>Witaj w panelu glownym! Mozesz <a href="{% url "edit" %}">edytowac profil</a>
         lub <a href="{% url "password_change" %}">zmienic haslo</a></p>
 {% endblock %}
